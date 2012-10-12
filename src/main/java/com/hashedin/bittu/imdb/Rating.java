@@ -12,7 +12,7 @@ public class Rating {
 	private int rating;
 	private long timestamp;
 	
-	public void importToUserTable(JdbcTemplate jdbcTemplate,List<String> list)
+	public void importToRatingTable(JdbcTemplate jdbcTemplate,List<String> list)
 	{
 	
 		String INSERT_USER_QUERY="insert into Rating(userId,itemId,rating,timestamp) values(?,?,?,?)";

@@ -27,8 +27,11 @@ public class Movie {
 			mv.setMovieId(Integer.parseInt(list.get(i++)));
 			mv.setMovieTitle(list.get(i++));
 			mv.setReleaseDate(list.get(i++));
+			
 			mv.setVideoReleaseDate(list.get(i++));
 		
+		
+			
 			mv.setImdbUrl(list.get(i++));
 			
 			Object[] params = new Object[] {mv.getMovieId(),mv.getMovieTitle(),mv.getReleaseDate(),mv.getVideoReleaseDate(),mv.getImdbUrl()};
@@ -39,7 +42,7 @@ public class Movie {
 			
 			while(cnt!=19)
 			{
-				if(Boolean.parseBoolean(list.get(i)))
+				if(Integer.parseInt(list.get(i))==1)
 				{
 					int[] type1=new int[]{Types.INTEGER,Types.INTEGER};
 					Object[] params1=new Object[]{mv.getMovieId(),(i%24)-5};

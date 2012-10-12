@@ -16,30 +16,21 @@ public class Parsing {
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(filename));
 			String line = "";
-			StringTokenizer token = null;
-			
-
 			while ((line = br.readLine()) != null) {
-		
-
-				// break comma separated file line by line
-				token = new StringTokenizer(line, "|");
-
-				while (token.hasMoreTokens()) 
+				String[] tokens = line.split("\\|");
+				for(int i=0;i<tokens.length;i++)
 				{
-				
-					list.add(token.nextToken());
-					//System.out.println("Line #" + lineNum + ", Token #"
-						//	+ tokenNum + ", Token: " + token.nextToken());
+					list.add(tokens[i]);
 				}
-
+			
 			}
-
 			return list;
+			
 		} catch (Exception e) {
 			System.err.println("Parse Error: " + e.getMessage());
 			return null;
 		}
+		
 	}
 	
 	

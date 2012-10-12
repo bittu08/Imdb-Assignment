@@ -22,15 +22,13 @@ public class Parsing2 {
 			while ((line = br.readLine()) != null) {
 		
 
-				// break comma separated file line by line
-				token = new StringTokenizer(line, "\t");
+				
 
 				while (token.hasMoreTokens()) 
 				{
 				
 					list.add(token.nextToken());
-					//System.out.println("Line #" + lineNum + ", Token #"
-						//	+ tokenNum + ", Token: " + token.nextToken());
+					
 				}
 
 			}
