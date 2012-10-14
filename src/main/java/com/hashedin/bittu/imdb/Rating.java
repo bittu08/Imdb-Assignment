@@ -5,33 +5,35 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class Rating {
+public class Rating implements ICommon {
 	
 	private int userId;
 	private int itemId;
 	private int rating;
 	private long timestamp;
-	
-	public void importToRatingTable(JdbcTemplate jdbcTemplate,List<String> list)
+	private JdbcTemplate jdbcTemplate;
+	private List<String> list;
+
+	public void importDataToTable()
 	{
 	
 		String INSERT_USER_QUERY="insert into Rating(userId,itemId,rating,timestamp) values(?,?,?,?)";
 		int[] types = new int[] {Types.INTEGER, Types.INTEGER, Types.INTEGER, Types.INTEGER};
 		
-        for(int i=0;i<list.size();)
+        for(int i=0;i<list.size()-1;)
 		{
         	Rating us=new Rating();
 			us.setUserId(Integer.parseInt(list.get(i++)));
 			us.setItemId(Integer.parseInt(list.get(i++)));
 			us.setRating(Integer.parseInt(list.get(i++)));
 			us.setTimestamp(Integer.parseInt(list.get(i++)));
-			
+	
 			
 			Object[] params = new Object[] {us.getUserId(),us.getItemId(),us.getRating(),us.getTimestamp()};
 			jdbcTemplate.update(INSERT_USER_QUERY,params, types);
 	        
 	        }
-			System.out.println("Data Inserted To User Successfully");
+			System.out.println("Data Inserted To Rating Successfully");
 	}
 	
 
@@ -71,6 +73,16 @@ public class Rating {
 
 	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
+	}
+
+
+	public void setList(List<String> list) {
+		this.list=list;
+	}
+
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate =DataImporter.jdbcTemplate;
 	}
 	
 	

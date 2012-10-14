@@ -6,14 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class Parsing {
+public class Parsing implements IParsingToClass {
 
+    private String filename;
 	public List<String> list=null;
-	
-	public List<String> parseFile(String filename) 
+
+	public void parseFile() 
 	{
 		list=new ArrayList<String>();
-		try{
+		try
+		{
 			BufferedReader br = new BufferedReader(new FileReader(filename));
 			String line = "";
 			while ((line = br.readLine()) != null) {
@@ -24,14 +26,23 @@ public class Parsing {
 				}
 			
 			}
-			return list;
 			
 		} catch (Exception e) {
 			System.err.println("Parse Error: " + e.getMessage());
-			return null;
 		}
 		
 	}
+
+	public List<String> getList() {
+		return list;
+	}
+
+	public void setfilename(String filename)
+	{
+		this.filename=filename;
+	}
+	
+	
 	
 	
 

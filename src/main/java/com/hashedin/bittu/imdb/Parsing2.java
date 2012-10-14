@@ -6,23 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class Parsing2 {
+public class Parsing2 implements IParsingToClass {
 
-	public List<String> list=null;
+	private List<String> list=null;
+	private String filename;
 	
-	public List<String> parseFile(String filename) 
+	public void parseFile() 
 	{
 		list=new ArrayList<String>();
-		try{
+		try
+		{
 			BufferedReader br = new BufferedReader(new FileReader(filename));
 			String line = "";
 			StringTokenizer token = null;
-			
 
+			
 			while ((line = br.readLine()) != null) {
 		
 
-				
+				token=new StringTokenizer(line,"\t");
 
 				while (token.hasMoreTokens()) 
 				{
@@ -33,13 +35,17 @@ public class Parsing2 {
 
 			}
 
-			return list;
 		} catch (Exception e) {
 			System.err.println("Parse Error: " + e.getMessage());
-			return null;
 		}
 	}
 	
+	public List<String> getList() {
+		return list;
+	}
 	
-
+	public void setfilename(String filename)
+	{
+		this.filename=filename;
+	}
 }

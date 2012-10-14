@@ -15,6 +15,16 @@
            http://www.springframework.org/schema/web-services/web-services-2.0.xsd
            http://www.springframework.org/schema/oxm
            http://www.springframework.org/schema/oxm/spring-oxm-1.5.xsd">
+    
+    <bean id="Movie" class="com.hashedin.bittu.imdb.Movie"/>
+    <bean id="Genre" class="com.hashedin.bittu.imdb.Genre"/>
+    <bean id="Rating" class="com.hashedin.bittu.imdb.Rating"/>
+    <bean id="User" class="com.hashedin.bittu.imdb.User"/>
+    <bean id="Parsing" class="com.hashedin.bittu.imdb.Parsing">
+    </bean>
+    <bean id="Parsing2" class="com.hashedin.bittu.imdb.Parsing2"/>
+   
+    
 
 	<bean id="dashboardDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>

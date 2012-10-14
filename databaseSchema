@@ -1,0 +1,10 @@
+create table User(userId int not null, age int not null, gender char not null,occupation varchar(100) not null, zipCode varchar(100) not null,primary key(userId))
+
+create table Movie(movieId int not null, movieTitle varchar(300),releaseDate varchar(100) ,videoReleaseDate varchar(100), imdbUrl varchar(300), primary key(movieId));
+
+create table Rating(userId int not null, itemId int not null, rating int not null, timestamp long not null);
+
+create table Genre(genreId int not null,genreName varchar(100) not null,primary key(genreId));
+create table MovieMapGenre(movieId int not null,genreId int not null,foreign key(movieId) references Movie(movieId),foreign key(genreId) references Genre(genreId));
+
+

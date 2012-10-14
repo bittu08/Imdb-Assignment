@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class Movie {
+public class Movie implements ICommon {
 	
 	private int movieId;
 	private String movieTitle;
@@ -13,9 +13,12 @@ public class Movie {
 	private String videoReleaseDate;
 	private String imdbUrl;
 	private int genre;
+	private JdbcTemplate jdbcTemplate;
+	private List<String> list;
 	
 	
-	public void importToMovieTable(JdbcTemplate jdbcTemplate,List<String> list)
+	
+	public void importDataToTable()
 	{
 	
 		String INSERT_USER_QUERY="insert into Movie(movieId,movieTitle,releaseDate,videoReleaseDate,imdbUrl) values(?,?,?,?,?)";
@@ -30,8 +33,6 @@ public class Movie {
 			
 			mv.setVideoReleaseDate(list.get(i++));
 		
-		
-			
 			mv.setImdbUrl(list.get(i++));
 			
 			Object[] params = new Object[] {mv.getMovieId(),mv.getMovieTitle(),mv.getReleaseDate(),mv.getVideoReleaseDate(),mv.getImdbUrl()};
@@ -124,6 +125,16 @@ public class Movie {
 
 	public void setGenre(int genre) {
 		this.genre = genre;
+	}
+
+
+	public void setList(List<String> list) {
+	     this.list=list;
+	}
+
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
 	}
 	
 	

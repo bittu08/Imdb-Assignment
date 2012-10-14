@@ -6,15 +6,17 @@ import java.util.List;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 
-public class User {
+public class User implements ICommon {
 	
 	private int userId;
 	private int age;
 	private char gender;
 	private String occupation;
 	private String zipCode;
+	private JdbcTemplate jdbcTemplate;
+	private List<String> list;
 
-	public void importToUserTable(JdbcTemplate jdbcTemplate,List<String> list)
+	public void importDataToTable()
 	{
 	
 		String INSERT_USER_QUERY="insert into User(userId,age,gender,occupation,zipCode) values(?,?,?,?,?)";
@@ -37,6 +39,14 @@ public class User {
 			System.out.println("Data Inserted To User Successfully");
 	}
 	
+	public void setList(List<String> list) {
+		this.list=list;
+	}
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate =DataImporter.jdbcTemplate;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", age=" + age + ", gender=" + gender
